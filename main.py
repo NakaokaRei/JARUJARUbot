@@ -14,8 +14,8 @@ from linebot.models import (
 import os
 
 app = Flask(__name__)
-scheduler = BlockingScheduler()
-scheduler.start()
+#scheduler = BlockingScheduler()
+#scheduler.start()
 
 #環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
