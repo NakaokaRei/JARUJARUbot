@@ -1,5 +1,6 @@
 from flask import Flask, request, abort
 from apscheduler.schedulers.blocking import BlockingScheduler
+import atexit
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -14,6 +15,7 @@ import os
 
 app = Flask(__name__)
 scheduler = BlockingScheduler()
+scheduler.start()
 
 #環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
@@ -59,7 +61,7 @@ def my_job():
 scheduler.add_job(
     my_job, 'interval', seconds=30)
 
-scheduler.start()
+atexit.register(lambda: scheduler.shutdown())
 
 
 if __name__ == "__main__":
