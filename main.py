@@ -58,10 +58,9 @@ def my_job():
 
 #scheduler.add_job(
 #    my_job, 'interval', start_time="2019-12-18 18:30:00", hours=24)
-scheduler.add_job(
-    my_job, 'interval', seconds=30)
+#scheduler.add_job(
+#    my_job, 'interval', seconds=30)
 
-atexit.register(lambda: scheduler.shutdown())
 
 
 if __name__ == "__main__":
